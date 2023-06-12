@@ -21,8 +21,8 @@ const requestListener = (req, res) => {
         'Content-Type': 'application/json'
     }
 
-    console.log(req.url);
-    console.log(req.method);
+    /*     console.log(req.url);
+        console.log(req.method); */
 
     let body = "";
     //let num = 0;
@@ -81,10 +81,9 @@ const requestListener = (req, res) => {
         const id = req.url.split('/').pop();
         //element.id 要加 id
         const index = todos.findIndex(element => element.id == id);
-        console.log(id)
-        console.log(index)
+        /*         console.log(id)
+                console.log(index) */
         if (index !== -1) {
-            console.log("test123")
             todos.splice(index, 1);
             res.writeHead(200, headers);
             res.write(JSON.stringify({
@@ -133,6 +132,6 @@ const requestListener = (req, res) => {
 }
 
 const server = http.createServer(requestListener);
-server.listen(8081);
+server.listen(process.env.PORT || 3005);
 
 
